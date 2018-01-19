@@ -15,6 +15,7 @@ public class Customer {
   public void addRental(Rental arg) {
     _rentals.addElement(arg);
   }
+
   public String getName() {
     return _name;
   }
@@ -44,14 +45,13 @@ public class Customer {
   }
 
   private int getFrequentRenterPoints(Rental each) {
-    int frequentRenterPoints = 0;
-    //적립 포인트를 1 포인트 증가
-    frequentRenterPoints += 1;
+    // 적립 포인트를 1 포인트 증가
     // 최신물을 이틀 이상 대여하면 보너스 포인트 지급
     if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
-        each.getDaysRented() > 1)
-      frequentRenterPoints += 1;
-    return frequentRenterPoints;
+        each.getDaysRented() > 1) {
+      return 2;
+    } else {
+      return 1;
+    }
   }
-
 }
